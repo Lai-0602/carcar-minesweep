@@ -1,6 +1,8 @@
 import readline from "readline";
+import chalk from "chalk";
 
 function outputGrid(data) {
+    console.clear();
     let current = "";
     current += "   1 2 3 4 5 6 7 8 9 10";
     for (let i = 0; i < 100; i++) {
@@ -75,8 +77,8 @@ async function question(data) {
             y = parseInt(y) - 1;
             if (data[x * 10 + y].type === "x") {
                 console.log("You stepped on a mine");
-                rl.question("Restart?(y/n) ", (bool) => {
-                    if (bool == "y") {
+                rl.question("Restart?(Y/n) ", (bool) => {
+                    if (bool == "" || bool == "y") {
                         data = createGrid();
                         question(data);
                     } else {
